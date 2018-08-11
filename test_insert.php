@@ -1,5 +1,5 @@
 <?php
-require 'config.php'
+require 'config.php';
 date_default_timezone_set('Asia/Chongqing');   
 $connect = mysql_connect($mysql_host, $mysql_user, $mysql_pwd) or die('数据库连接错误');
 mysql_select_db("football", $connect);
