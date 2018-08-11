@@ -1,4 +1,5 @@
 <?php
+require 'config.php'
 date_default_timezone_set('Asia/Chongqing');   
 
 $resp = array('code'=>0, 'msg'=>'', 'count'=>200, 'data'=>array());
@@ -20,7 +21,7 @@ do {
 
     $start = ($page - 1) * $limit;
 
-    $connect = mysql_connect('localhost','root','123456') or die('数据库连接错误');
+    $connect = mysql_connect($mysql_host, $mysql_user, $mysql_pwd) or die('数据库连接错误');
     mysql_select_db("football", $connect);
     //$time = date('Y-m-d H:i:s');
     //$result = mysql_query("insert into analysis(time) values('$time')");
@@ -36,11 +37,11 @@ do {
     }else {
         $result = null;
         if(!empty($_REQUEST['team']) && !empty($_REQUEST['rate'])){
-            $result = mysql_query("select * from analysis where left_team='$team' or right_team='$team' or rate_win='$rate' or rate_even='$rate' or rate_lose='$rate'  order by id DESC limit $limit");
+            $result = mysql_query("select * from analysis where left_team='$team' or right_team='$team' or rate_win=$rate or rate_even=$rate or rate_lose=$rate  order by id DESC limit $limit");
         }else if (!empty($_REQUEST['team'])){
             $result = mysql_query("select * from analysis where left_team='$team' or right_team='$team'  order by id DESC limit $limit");
         }else{
-            $result = mysql_query("select * from analysis where rate_win='$rate' or rate_even='$rate' or rate_lose='$rate'  order by id DESC limit $limit");
+            $result = mysql_query("select * from analysis where rate_win=$rate or rate_even=$rate or rate_lose=$rate  order by id DESC limit $limit");
         } 
         while ($row = mysql_fetch_array($result, MYSQL_ASSOC)){
             $datas[] = $row;
