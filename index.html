@@ -28,8 +28,9 @@
 <table class="layui-table" lay-data="{url:'/football/data.php', id:'datas', page:true}" lay-filter="datas">
   <thead>
     <tr>
-      <th lay-data="{type:'checkbox'}">ID</th>
-      <th lay-data="{field:'id', width:80, sort: true}">ID</th>
+      <th lay-data="{type:'checkbox', width:20}">ID</th>
+      <th lay-data="{field:'id', width:40, sort: true}">ID</th>
+      <th lay-data="{field:'race_type', width:60,  edit: 'text'}">类型</th>
       <th lay-data="{field:'left_team', width:120,  edit: 'text'}">主队</th>
       <th lay-data="{field:'right_team', width:120,  edit: 'text'}">客队</th>
       <th lay-data="{field:'rate_win', width:60,  edit: 'text'}">胜赔</th>

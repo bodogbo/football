@@ -9,3 +9,4 @@ alter table analysis add column macao_result char(10) not null default '';
 alter table analysis add column recheck varchar(20) not null default '';
 alter table analysis add column last_result varchar(20) not null default '';
 alter table analysis add column gamble_result char(1) not null default '';
+alter table analysis add column race_type varchar(20) not null default '';
